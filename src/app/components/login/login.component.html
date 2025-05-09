@@ -1,0 +1,134 @@
+<div class="flex justify-center items-center bg-base-200">
+  <div class="card card-bordered bg-base-300 w-96">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <div class="card-body">
+        <h3 class="text-center text-2xl font-bold">
+          {{ isLoggedin ? "Login" : "Signup" }}
+        </h3>
+
+        <div *ngIf="!isLoggedin" class="form-control">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">First Name</span>
+            </label>
+            <input
+              type="text"
+              name="firstname"
+              required
+              [(ngModel)]="firstname"
+              (ngModelChange)="getfirstname($event)"
+              placeholder="Enter your FirstName"
+              #firstnameRef="ngModel"
+              class="input input-bordered"
+            />
+            <div
+              *ngIf="firstnameRef.invalid && firstnameRef.touched"
+              class="text-red-500 text-sm"
+            >
+              <div *ngIf="firstnameRef.errors?.['required']">
+                Firstname is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Last Name</span>
+            </label>
+            <input
+              type="text"
+              name="lastname"
+              required
+              [(ngModel)]="lastname"
+              (ngModelChange)="getlastname($event)"
+              placeholder="Enter your Last name"
+              #lastnameRef="ngModel"
+              class="input input-bordered"
+            />
+            <div
+              *ngIf="lastnameRef.invalid && lastnameRef.touched"
+              class="text-red-500 text-sm"
+            >
+              <div *ngIf="lastnameRef.errors?.['required']">
+                lastname is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            email
+            [(ngModel)]="email"
+            (ngModelChange)="getemail($event)"
+            placeholder="Enter your email"
+            #emailRef="ngModel"
+            class="input input-bordered"
+          />
+          <div
+            *ngIf="emailRef.invalid && emailRef.touched"
+            class="text-red-500 text-sm"
+          >
+            <div *ngIf="emailRef.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailRef.errors?.['email']">Enter a valid email.</div>
+          </div>
+          <span *ngIf="emailError" class="text-red-500 text-sm"
+            >Invalid email</span
+          >
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input
+            type="password"
+            required
+            minlength="6"
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            (ngModelChange)="getpassword($event)"
+            placeholder="Enter your password"
+            class="input input-bordered"
+            #passRef="ngModel"
+          />
+          <div *ngIf="passRef.invalid && passRef.touched">
+            <div
+              class="text-red-500 text-sm"
+              *ngIf="passRef.errors?.['required']"
+            >
+              Password is required.
+            </div>
+            <div
+              class="text-red-500 text-sm"
+              *ngIf="passRef.errors?.['minlength']"
+            >
+              Min 6 characters required.
+            </div>
+          </div>
+
+          <label class="label">
+            <div (click)="togglelogin()" class="label-text-alt link link-hover">
+              {{
+                isLoggedin
+                  ? " New User?Please Signup"
+                  : "Already Signup Please Login"
+              }}
+            </div>
+          </label>
+        </div>
+        <div class="card-actions justify-center">
+          <button type="submit" class="btn btn-primary">
+            {{ isLoggedin ? "Login" : "Signup" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

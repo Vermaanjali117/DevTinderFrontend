@@ -1,0 +1,52 @@
+<div class="h-96 w-100 mx-auto p-6 bg-base-200 rounded-xl shadow-lg mt-6">
+  <h2 class="text-2xl font-bold mb-4 text-center">Edit Profile</h2>
+
+  <!-- Grid layout for parallel fields -->
+  <div class="grid grid-cols-2 gap-4">
+    <div class="form-control">
+      <label class="label"><span class="label-text">First Name</span></label>
+      <input    (ngModelChange)="onFieldChange('firstname',$event)"  [(ngModel)]="userData.firstname" type="text" placeholder="Enter your first name" class="input input-bordered" />
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">Last Name</span></label>
+      <input (ngModelChange)="onFieldChange('lastname',$event)"  [(ngModel)]="userData.lastname"   type="text" placeholder="Enter your last name" class="input input-bordered" />
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">Age</span></label>
+      <input (ngModelChange)="onFieldChange('age',$event)" [(ngModel)]="userData.age"  type="number" placeholder="Enter your age" class="input input-bordered" />
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">Gender</span></label>
+      <select placeholder="--Select--" (ngModelChange)="onFieldChange('gender',$event)"  [(ngModel)]="userData.gender"  class="select select-bordered">
+        <option disabled selected>Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Other</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">Skills</span></label>
+      <input (ngModelChange)="onFieldChange('skills',$event)"  [(ngModel)]="userData.skills"  type="text" placeholder="Enter your skills" class="input input-bordered" />
+    </div>
+
+    <div class="form-control">
+      <label class="label"><span class="label-text">Photo URL</span></label>
+      <input (ngModelChange)="onFieldChange('Photourl',$event)" [(ngModel)]="userData.Photourl" type="text" placeholder="Enter photo URL" class="input input-bordered" />
+    </div>
+  </div>
+
+  <!-- Full-width fields -->
+  <div class="form-control mt-4">
+    <label class="label"><span class="label-text">About</span></label>
+    <textarea (ngModelChange)="onFieldChange('about',$event)" [(ngModel)]="userData.about"  class="textarea textarea-bordered h-30 ml-6" placeholder="Write something about yourself"></textarea>
+  </div>
+
+  <!-- Save Profile button inside the bordered container -->
+  <div class="form-control mt-4">
+    <button (click)="updatedata()" class="btn btn-primary w-full">Save Profile</button>
+  </div>
+</div>

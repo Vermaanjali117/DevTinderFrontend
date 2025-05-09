@@ -1,0 +1,24 @@
+<h2 class="text-center text-2xl font-bold my-4">Pending Requests</h2>
+
+<div class="flex flex-col items-center justify-center">
+  <div *ngFor="let data of requests;let i = index" 
+    class="card card-side bg-base-300 shadow-md mb-4"
+    style="width: 500px !important">
+    <figure>
+      <img
+        src="{{data.Photourl}}"
+        alt="Connection Photo"
+        class="w-24 h-24 object-cover rounded-full m-4"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{{data.fromUserId.firstname}}{{data.fromUserId.lastname}}</h2>
+        <div><span>{{data.age}}</span><span>{{data.gender}}</span></div>
+        <p>{{data.about}}</p>
+      <div class="card-actions justify-end">
+        <button (click)="AcceptorRejectConnection('accepted',data._id,i)" class="btn btn-primary">Accept</button>
+        <button  (click)="AcceptorRejectConnection('rejected',data._id,i)"  class="btn btn-secondary">Reject</button>
+      </div>
+    </div>
+  </div>
+</div>

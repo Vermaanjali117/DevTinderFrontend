@@ -1,0 +1,12 @@
+<pre>{{feeddata[0]?.firstname}}</pre>
+<pre>{{feeddata[0]?.lastname}}</pre>
+<ng-container *ngIf="feeddata && feeddata.length > 0">
+  <app-feed-cards
+    *ngIf="feeddata[0]._id"
+    [userData]="feeddata[0]">
+  </app-feed-cards>
+</ng-container>
+<div *ngIf="feeddata.length === 0" class="text-center text-xl font-bold mt-4">
+  No more feed items available.
+</div>
+

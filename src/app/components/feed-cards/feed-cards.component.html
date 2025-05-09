@@ -1,0 +1,19 @@
+<div class="h-96 flex flex-col items-center justify-center mt-4" *ngIf="userData">
+  <div class="card bg-base-300 w-96 shadow-sm h-full">
+    <figure>
+      <img
+        [src]="userData?.Photourl"
+        alt="photo"
+        class="h-40 object-cover w-full"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{{ userData?.firstname }}</h2>
+      <p>{{ userData?.about }}</p>
+      <div class="card-actions justify-space-between">
+        <button (click)="IgnoreorAccept('ignored', userData._id)" class="btn btn-primary">Ignore</button>
+        <button (click)="IgnoreorAccept('interested', userData._id)" class="btn btn-secondary">Interested</button>
+      </div>
+    </div>
+  </div>
+</div>

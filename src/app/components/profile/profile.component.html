@@ -1,0 +1,8 @@
+<div class="flex flex-row gap-4 justify-center">
+  <div *ngIf="user.length>0 || user!=undefined">
+    <app-edit-profile (userDataChange)="onUserDataChange($event)" [userData]="user"></app-edit-profile>
+  </div>
+  <div>
+    <app-feed-cards [userData]="user"></app-feed-cards>
+  </div>
+</div>
