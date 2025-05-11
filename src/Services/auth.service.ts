@@ -8,7 +8,7 @@ export class AuthService {
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
   loginpost(sync: any) {
-    return this.http.post(`${this.apiUrl}`, sync, {
+    return this.http.post(`${this.apiUrl}/login`, sync, {
       withCredentials: true,
     });
   }
