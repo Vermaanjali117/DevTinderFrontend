@@ -6,59 +6,59 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) {}
 loginpost(sync:any){
-   return  this.http.post('http://localhost:3000/login',sync ,{
+   return  this.http.post('/api/login',sync ,{
       withCredentials: true
     })
    }
 
 
 GetUserCredentials(){
-  return  this.http.get('http://localhost:3000/profile/view' ,{
+  return  this.http.get('/api/profile/view' ,{
     withCredentials: true
   })
 }
 Logout(){
-  return  this.http.post('http://localhost:3000/logout' , {}, {
+  return  this.http.post('/api/logout' , {}, {
     withCredentials: true
   })
 }
 
 getfeeddata(){
-  return  this.http.get('http://localhost:3000/user/feed' ,{
+  return  this.http.get('/api/user/feed' ,{
     withCredentials: true
   })
 }
 updatedata(sync:any){
-  return  this.http.patch('http://localhost:3000/profile/edit' ,sync,{
+  return  this.http.patch('/api/profile/edit' ,sync,{
     withCredentials: true
   })
 }
 getConnections(){
-return this.http.get('http://localhost:3000/user/connections',{
+return this.http.get('/api/user/connections',{
   withCredentials:true
 })
 }
 getpendingrequests(){
-  return this.http.get('http://localhost:3000/user/request/recieved',{
+  return this.http.get('/api/user/request/recieved',{
     withCredentials:true
   })
 }
 
 getrequests(){
-  return this.http.get('http://localhost:3000/user/request/recieved',{
+  return this.http.get('/api/user/request/recieved',{
     withCredentials:true
   })
 }
 
 
 AcceptorRejectConnection(status: string, requestId: string) {
-  return this.http.post(`http://localhost:3000/request/review/${status}/${requestId}`, {}, {
+  return this.http.post(`/api/request/review/${status}/${requestId}`, {}, {
     withCredentials: true
   });
 }
 
 SendorIgnoreConnection(status: string, requestId: string) {
-  return this.http.post(`http://localhost:3000/request/send/${status}/${requestId}`, {}, {
+  return this.http.post(`/api/request/send/${status}/${requestId}`, {}, {
     withCredentials: true
   });
 
@@ -67,7 +67,7 @@ SendorIgnoreConnection(status: string, requestId: string) {
 
 
 Signuppost(sync:any){
-  return this.http.post('http://localhost:3000/signup',sync, {
+  return this.http.post('/api/signup',sync, {
     withCredentials: true
   })
 }
